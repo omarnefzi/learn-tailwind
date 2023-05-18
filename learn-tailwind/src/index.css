@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.nav-link {
+  text-decoration: none;
+  color: green;
+  border-color: green;
+ 
+}
+
+
