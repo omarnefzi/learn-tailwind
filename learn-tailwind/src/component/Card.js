@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { addToCard } from '../rtk/cartSlice';
 import { Link } from 'react-router-dom';
 
-
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { removeFun } from '../rtk/productSlive';
 
 
 
@@ -147,6 +149,13 @@ return(
               </svg>
             </button>
             </Link>
+            <IconButton 
+                  onClick={()=>dispatch(removeFun(product))}
+                      aria-label="delete"
+                      size="large"
+                    >
+                      <DeleteIcon className='text-red-500' />
+                    </IconButton>
           </div>
         </div>
       </div>

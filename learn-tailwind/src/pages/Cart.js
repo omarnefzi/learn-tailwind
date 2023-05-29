@@ -1,13 +1,15 @@
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
-import { clear, removeFromCard } from "../rtk/cartSlice";
+import { clear, decreament, increament, removeFromCard } from "../rtk/cartSlice";
 import HomeIcon from "@mui/icons-material/Home";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cart } = useSelector((state) => state);
+  const  cart  = useSelector((state) => state.cart.items);
+  const {quantity}=useSelector((state)=>state.cart)
+  console.log(quantity)
   const dispatch = useDispatch();
   const btnNavigate = useNavigate();
 
@@ -66,8 +68,11 @@ const Cart = () => {
                       alt="product-image"
                     />{" "}
                   </td>
-                  <td class="border-double border-4 border--black w-96">
+                  <td class="border-double border-4 border--black w-96 ">
+                    <button onClick={()=>dispatch(decreament(product))}>-</button>
                     {product.quantity}
+                    <button  onClick={()=>dispatch(increament(product))}>+</button>
+
                   </td>
                   <td class="border-double border-4 border--black w-96">
                     {product.price}

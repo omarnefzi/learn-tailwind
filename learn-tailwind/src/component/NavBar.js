@@ -2,12 +2,12 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 function NavBar() {
-  const { cart } = useSelector((state) => state);
+  const  cart  = useSelector((state) => state.cart.items);
 
   const navigate = useNavigate();
   return (
     <>
-      <header className="header bg-white shadow-md flex items-center justify-between px-8 py-02 fixed-top h-20 ">
+      <header className="header bg-white shadow-md flex items-center justify-between px-8 py-02  h-20 ">
         {/* logo */}
         <h1 className="w-3/12">
           <a href>
