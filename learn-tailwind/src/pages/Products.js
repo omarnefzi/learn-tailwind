@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const Products = () => {
-  const  products  = useSelector((state) => state.products);
+  const  {products,isLoading,error}  = useSelector((state) => state.products);
   const [search,setSearch]=useState('')
 
 
@@ -30,15 +30,20 @@ const Products = () => {
             <Button variant="outline-success">Search</Button>
           </Form>
       <div className="flex flex-row flex-wrap justify-between my-5">
-        {filterProduct.map((product) => (
+        {
+        !isLoading ? 
+        filterProduct.map((product) => (
           <CustomCard
             key={product.id}
             {...product}
             product={product}
             className="w-72 m-4"
           />
-        ))}
+        )): <h2 className="text-white container">loading...</h2>}
       </div>
+      {
+        error && <h1> there is an error in the server plz try later ..</h1>
+      }
     </div>
   );
 };

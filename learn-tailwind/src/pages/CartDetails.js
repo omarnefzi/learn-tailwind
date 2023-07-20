@@ -1,13 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import { Button } from "@mui/material";
+import { fetchProductsById } from "../rtk/productSlive";
+import { useEffect } from "react";
 const CartDetails = () => {
+  const dispatch=useDispatch()
   const { id } = useParams();
   const btnNavigate = useNavigate();
-
+useEffect(()=>{
+  dispatch(fetchProductsById(id))
+},[dispatch])
   const productsDeails = useSelector((state) => state.products);
-  const seeDetails = productsDeails.find((movie) => movie.id === +id);
+  
   return (
     <>
       <div className="min-w-screen min-h-screen bg-yellow-300 flex items-center p-5 lg:p-10 overflow-hidden relative">
@@ -16,7 +21,7 @@ const CartDetails = () => {
             <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
               <div className="relative">
                 <img
-                  src={seeDetails.image}
+                  src={productsDeails.image}
                   className="w-full relative z-10"
                   alt
                 />
@@ -48,7 +53,7 @@ const CartDetails = () => {
                     $
                   </span>
                   <span className="font-bold text-5xl leading-none align-baseline">
-                    {seeDetails.price}
+                    {productsDeails.price}
                   </span>
                   <span className="text-2xl leading-none align-baseline">
                     .99

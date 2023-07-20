@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const  cart  = useSelector((state) => state.cart.items);
   const {quantity}=useSelector((state)=>state.cart)
-  console.log(quantity)
+
   const dispatch = useDispatch();
   const btnNavigate = useNavigate();
 
@@ -26,7 +26,7 @@ const Cart = () => {
           className="flex justify-center  "
           variant="outlined"
         >
-          {" "}
+       
           back home <HomeIcon> </HomeIcon>
         </Button>
 
